@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		86466AF42E04370B006878D3 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 86466AF32E04370B006878D3 /* ComposableArchitecture */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		86466AD02E04236D006878D3 /* AudioWithFreesound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioWithFreesound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86466AF42E04370B006878D3 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = AudioWithFreesound;
 			packageProductDependencies = (
+				86466AF32E04370B006878D3 /* ComposableArchitecture */,
 			);
 			productName = AudioWithFreesound;
 			productReference = 86466AD02E04236D006878D3 /* AudioWithFreesound.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 86466AC72E04236D006878D3;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				86466AF22E04370B006878D3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 86466AD12E04236D006878D3 /* Products */;
 			projectDirPath = "";
@@ -324,6 +333,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		86466AF22E04370B006878D3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.20.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		86466AF32E04370B006878D3 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86466AF22E04370B006878D3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 86466AC82E04236D006878D3 /* Project object */;
 }
