@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct AudioWithFreesoundApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  static let store = Store(
+    initialState: SearchSoundState(),
+    reducer: { SearchSoundReducer(environment: SearchSoundsEnvironment(searchSoundsRequest: searchSoundsEffect))
+    })
+
+  var body: some Scene {
+    WindowGroup {
+      ContentView(store: AudioWithFreesoundApp.store)
     }
+  }
 }

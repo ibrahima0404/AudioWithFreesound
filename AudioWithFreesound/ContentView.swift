@@ -6,19 +6,19 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
+  let store: StoreOf<SearchSoundReducer>
+  var body: some View {
+    SearchSoundsView(store: store)
+  }
 }
 
 #Preview {
-    ContentView()
+  let environment = SearchSoundsEnvironment(searchSoundsRequest: dummySearchSoundsEffect)
+  let reducer = SearchSoundReducer(environment: environment)
+  let store = Store(initialState: SearchSoundState(), reducer: { reducer })
+
+  ContentView(store: store)
 }
