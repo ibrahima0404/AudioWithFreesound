@@ -11,8 +11,8 @@ import ComposableArchitecture
 @main
 struct AudioWithFreesoundApp: App {
   static let store = Store(
-    initialState: SearchSoundState(),
-    reducer: { SearchSoundReducer(environment: SearchSoundsEnvironment(searchSoundsRequest: searchSoundsEffect))
+    initialState: AppState(),
+    reducer: { AppReducer()
     })
 
   var body: some Scene {

@@ -7,18 +7,27 @@
 
 import SwiftUI
 import ComposableArchitecture
+import AVFoundation
 
 struct ContentView: View {
-  let store: StoreOf<SearchSoundReducer>
+  let store: StoreOf<AppReducer>
   var body: some View {
-    SearchSoundsView(store: store)
+    let searchSoundStore = store.scope(state: \.searchSound, action: AppAction.searchSound)
+    let playSoundStore = store.scope(state: \.playSound, action: AppAction.playSound)
+    ZStack {
+      SearchSoundsView(store: searchSoundStore)
+      VStack{
+        Spacer()
+        MiniPlayerView(sliderValue: .constant(10), store: playSoundStore)
+      }
+    }
   }
 }
 
 #Preview {
   let environment = SearchSoundsEnvironment(searchSoundsRequest: dummySearchSoundsEffect)
-  let reducer = SearchSoundReducer(environment: environment)
-  let store = Store(initialState: SearchSoundState(), reducer: { reducer })
+  let reducer = AppReducer()
+  let store = Store(initialState: AppState(), reducer: { reducer })
 
   ContentView(store: store)
 }
