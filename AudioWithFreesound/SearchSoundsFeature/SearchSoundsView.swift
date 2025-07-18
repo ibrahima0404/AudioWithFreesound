@@ -11,12 +11,18 @@ import ComposableArchitecture
 struct SearchSoundsView: View {
   @State private var searchText = ""
   let store: StoreOf<SearchSoundReducer>
+  @State private var selectedSound: Sound?
   var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       NavigationStack {
-        List(viewStore.state.retrievedSounds, id: \.id) { sound in
+        List(viewStore.retrievedSounds, id: \.self, selection: $selectedSound) { sound in
           Text(sound.name)
             .lineLimit(2)
+        }
+        .onChange(of: selectedSound) { oldValue, newValue in
+          if let newValue {
+            viewStore.send(.onSelect(newValue))
+          }
         }
         .searchable(text: $searchText)
         .onChange(of: searchText) { oldValue, newValue in

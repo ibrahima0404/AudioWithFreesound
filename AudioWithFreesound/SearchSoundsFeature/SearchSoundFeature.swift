@@ -14,6 +14,7 @@ struct SearchSoundState: Equatable {
 enum SearchSoundAction: Equatable {
   case search(String)
   case retrievedSounds([Sound])
+  case onSelect(Sound)
 }
 
 struct SearchSoundsEnvironment {
@@ -39,6 +40,8 @@ struct SearchSoundReducer: Reducer {
       }
     case .retrievedSounds(let retrievedSounds):
       state.retrievedSounds = retrievedSounds
+      return .none
+    case .onSelect(_):
       return .none
     }
   }
