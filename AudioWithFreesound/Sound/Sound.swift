@@ -16,4 +16,8 @@ struct SoundMetadata: Decodable, Equatable {
   let name: String
   let duration: Double
   let previews: [String: String]
+
+  var url: URL? {
+    URL(string: previews["preview-lq-mp3"] ?? "")
+  }
 }
